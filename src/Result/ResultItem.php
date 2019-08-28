@@ -13,14 +13,50 @@
 namespace Inwebium\Grouper\Result;
 
 /**
- * Description of ResultItem
+ * Container for the item from Data which passed handler and made it to the 
+ * Result. Result object contains collections of these objects.
  *
  * @author inwebium
  */
-class ResultItem
+class ResultItem implements \ArrayAccess
 {
+    private $content;
+    
     public function __construct($item)
     {
-        ;
+        $this->content = $item;
+    }
+
+    public function offsetExists($offset): bool
+    {
+        return isset($this->content[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->content[$offset];
+    }
+
+    public function offsetSet($offset, $value): void
+    {
+        throw new BadMethodCallException(
+            get_class($this) . ' is readonly class. Tryed to set.'
+        );
+    }
+
+    public function offsetUnset($offset): void
+    {
+        throw new BadMethodCallException(
+            get_class($this) . ' is readonly class. Tryed to unset.'
+        );
+    }
+    
+    public function __get($name)
+    {
+        if (isset($this->content[$name])) {
+            return $this->content[$name];
+        } else {
+            return null;
+        }
     }
 }
