@@ -19,5 +19,5 @@ namespace Inwebium\Grouper\Data;
  */
 abstract class AbstractDataSource implements DataSourceInterface
 {
-
+    protected $source;
 }

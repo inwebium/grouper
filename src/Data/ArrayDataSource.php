@@ -18,9 +18,7 @@ namespace Inwebium\Grouper\Data;
  * @author inwebium
  */
 class ArrayDataSource extends AbstractDataSource
-{
-    private $source;
-    
+{    
     public function __construct(&$source)
     {
         $this->source = $source;

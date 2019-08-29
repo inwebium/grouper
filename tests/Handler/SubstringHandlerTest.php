@@ -10,7 +10,7 @@
  * @link https://github.com/inwebium/grouper GitHub
  */
 
-namespace Inwebium\Grouper\Test;
+namespace Inwebium\Grouper\Test\Handler;
 
 /**
  * Description of SubstringHandlerTest
