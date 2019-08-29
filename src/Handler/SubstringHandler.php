@@ -13,17 +13,19 @@
 namespace Inwebium\Grouper\Handler;
 
 /**
- * Description of ValueHandler
+ * Description of SubstringHandler
  *
  * @author inwebium
  */
-class ValueHandler extends AbstractHandler
-{   
+class SubstringHandler extends AbstractHandler
+{
     protected function setDefaultParams()
     {
         $this->params = [
             'field' => 'id',
-            'value' => 0
+            'value' => 'a',
+            'start' => 0,
+            'length' => 0
         ];
     }
     
@@ -33,14 +35,17 @@ class ValueHandler extends AbstractHandler
             $this->params['field']
         ];
     }
-    
+
     public function applyFunction(iterable &$item)
     {
-        if ($item[$this->params['field']] === $this->params['value']) {
+        if (substr(
+            $item[$this->params['field']], 
+            $this->params['start'], 
+            $this->params['length']) === $this->params['value']
+        ) {
             return $this->params['field'];
         } else {
             return 'other';
         }
     }
-
 }
